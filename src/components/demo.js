@@ -4,18 +4,19 @@ import React, {useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
 import {UploadOutlined} from "@ant-design/icons";
-
-// const FormItem = Form.Item;
+import 'antd/dist/antd.css';
+import tw from "twin.macro";
 
 const StyledDiv = styled.div`
   border: none;
 `
 
 const Div = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
+  ${tw`
+    flex
+  
+  `}
+  
 `
 const PdfDemo = () =>{
 
@@ -45,30 +46,23 @@ const PdfDemo = () =>{
     }
 
     return(
-        <FormItem
-            // label={label}
-            // help={hasError && error}
-            // validateStatus={hasError ? "error" : "success"}
-        >
+        <FormItem>
 
-            <div>
+            <Div>
+                <StyledDiv>
                 <Upload
                     action="http://localhost:3000/"
                     accept={"image/*"}
                     className="avatar-uploader"
-                    // customRequest={null}
                     listType="picture"
                     beforeUpload={beforeUpload}
-                    // loading={false}
-                    // showUploadList={true}
                 >
 
-                    <StyledDiv>
                         <Button  title = 'Upload File' icon={<UploadOutlined />} >Click to Upload</Button>
-                    </StyledDiv>
                 </Upload>
+                </StyledDiv>
                 <Button onClick={handleSubmit}>Compress</Button>
-            </div>
+            </Div>
         </FormItem>
     )
 }
